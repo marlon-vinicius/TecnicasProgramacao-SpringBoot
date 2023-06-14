@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+//import java.net.URL;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Font;
@@ -8,10 +10,16 @@ import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 
 public class GeradorStickers {
-    public void gerarStickers() throws IOException {
+    public void gerarStickers(InputStream inputStream, String nomeArquivo) throws IOException {
         // leitura da imagem "local"
-        BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
+        //BufferedImage imagemOriginal = ImageIO.read(new File("entrada/filme.jpg"));
 
+        // leitura da imagem "URL"
+        //InputStream inputStream = new URL("https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_Ratio0.6716_AL_.jpg").openStream();
+        
+
+
+        BufferedImage imagemOriginal = ImageIO.read(inputStream);
         //criar uma nova imagem em memória com transparencia e com tamanho novo
         int largura = imagemOriginal.getWidth();
         int altura = imagemOriginal.getHeight();
@@ -31,12 +39,12 @@ public class GeradorStickers {
         
 
         // escrever a nova imagem em arquivo
-        ImageIO.write(novaImagem,"png",new File("saida/figurinha.png"));
+        ImageIO.write(novaImagem,"png",new File("saida/"+nomeArquivo+".png"));
     }
 
-    public static void main(String[] args) throws IOException {
-        var gerador = new GeradorStickers();
-        gerador.gerarStickers();
-    }
+    // public static void main(String[] args) throws IOException {
+    //     var gerador = new GeradorStickers();
+    //     gerador.gerarStickers();
+    // }
     
 }
