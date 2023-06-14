@@ -39,7 +39,7 @@ public class GeradorStickers {
         
 
         // escrever a nova imagem em arquivo
-        ImageIO.write(novaImagem,"png",new File("saida/"+nomeArquivo+".png"));
+        ImageIO.write(novaImagem,"png",new File("saida/"+nomeArquivo));
     }
 
     // public static void main(String[] args) throws IOException {
